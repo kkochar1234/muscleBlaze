@@ -1,0 +1,52 @@
+extends ../layouts/default
+
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').ORDER_SUCCESS.identifier
+
+block mainContent
+  .container-fluid
+    .card
+      - var oDetail = results.orderPlacedDetails;
+      .row
+        .card-header #{oDetail.orderStatus}
+        .card-content
+          .col-sm-5 Order ID
+          .col-sm-7 #{oDetail.gId}
+          .col-sm-5 Order amount
+          .col-sm-7 Rs. #{oDetail.totPay}
+
+    .card
+      .card-header Items Ordered
+      .card-content
+
+        ul.list
+          each item in oDetail.orderVar
+            li
+              .row.item
+                .col-sm-2
+                  img(src="#{item.pr_img.t_link}")
+                .col-sm-6
+                  .item-name
+                    a(href="#{item.url}") #{item.sv_nm}
+                    span.text-success ( x #{item.qty} )
+
+                .col-sm-2
+                  .item-oprice #{item.totOffPr}
+
+    if oDetail.cartFreebies.length > 0
+      .card
+        .card-header Freebies
+        .card-content
+          ul.list
+            each item in oDetail.cartFreebies
+              li
+                .row.item
+                  .col-sm-6
+                    .item-name #{item.freebieNm}
+                      span.text-success ( x #{item.qty} )
+
+block js
+  script dataLayer.push({'currencyCode':'INR','transactionId': '#{oDetail.gId}','transactionTotal': #{oDetail.totPay},'transactionTax': 0,'transactionShipping': #{oDetail.shippingCh},'transactionProducts': [
+    each item,index in oDetail.orderVar
+      | {'sku': '#{item.sv_id}','name': '#{item.sv_nm}','price': #{item.totOffPr},'quantity': #{item.qty}} #{index+1==oDetail.orderVar?'':','}
+    ]})

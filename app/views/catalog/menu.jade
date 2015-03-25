@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block mainContent
+  div.container-fluid
+    div.row
+      each menuNode in menuNodes
+        div
+          a(href="#{menuNode.url}") #{menuNode.nm}
+
+
+

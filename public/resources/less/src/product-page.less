@@ -1,0 +1,41 @@
+@import '../variables';
+
+body{
+  margin-bottom:30px;
+}
+
+.variant-title{
+  font-size:@font-large
+}
+.variant-price{
+  color:@pallet-color-important;
+  font-size:@font-large;
+}
+
+.variant-discount{
+}
+
+.variant-mrp{
+  color:@pallet-color-subtle;
+  text-decoration: line-through;
+}
+
+.buy-now-container{
+  position:fixed;
+  bottom:0;
+  z-index:10;
+  padding:@padding-larger;
+  text-align:center;
+  width:100%;
+  left:0;
+  .buy-now{
+    display: block;
+    color:@pallet-color-light;
+    font-size: @font-medium;
+  }
+  .oos-msg{
+    display: block;
+    color:@pallet-color-important;
+    font-size: @font-medium;
+  }
+}

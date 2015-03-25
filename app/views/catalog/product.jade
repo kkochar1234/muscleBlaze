@@ -1,0 +1,44 @@
+extends ../layouts/default
+append vars
+  - var hideQuickLinks = true;
+  - dtLyr.pageType = req.app.get('pageConstants').PRODUCT.identifier
+
+block mainContent
+  link(rel="stylesheet",href="/resources/css/product-page.css")
+  - var productData = results
+  div.container-fluid
+    .card
+      .card-content.text-center
+        img(src="#{productData.pr_img.s_link}")
+        h1.variant-title #{productData.nm}
+
+    .card
+      .card-content
+        .row
+          .col-xs-6.variant-price Rs. #{productData.offer_pr}
+          .col-xs-6.variant-discount
+            if productData.discount > 0
+              | #{productData.discount}% discount
+        .row
+          .col-xs-6.variant-mrp Rs. #{productData.mrp}
+          .col-xs-6.variant-rating
+            .rating
+              .rating-star(style="width:#{productData.rating * 20}%")
+
+
+    .card
+      .card-content
+        ul
+          each keyPoint in productData.kp
+            li #{keyPoint}
+
+    if !productData.oos && productData.ordrEnbld
+      .buy-now-container.btn.btn-special
+        a(href="/add/cart?storeVariantId=#{productData.id}&quantity=1", variant-id="#{productData.id}", vendor-id = "#{productData.vendorId}").buy-now Buy Now
+    else
+      .buy-now-container.btn
+          | PRODUCT CURRENTLY NOT AVAILABLE
+
+
+block js
+  script(type="text/javascript",src="/resources/js/cart.js")

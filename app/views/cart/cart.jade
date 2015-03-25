@@ -1,0 +1,199 @@
+extends ../layouts/default
+
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').CART.identifier
+
+block mainContent
+  .container-fluid
+
+    if (cartPricing == null) ||(cartPricing.cartVar.length == 0 && cartPricing.cartPacks.length == 0)
+      .card
+        .card-content.text-center
+          h3 Your cart is empty. Please add products to your cart.
+          div
+            a.btn.btn-primary(href='/') Back to shopping
+    else
+      .card(data-role="cart-summary")
+        .card-header Cart summary
+        .card-content
+          .row.total-payable
+            .col-xs-6 You pay
+            .col-xs-6.amount Rs.
+              span.js-tot-price(data-role="total-payable")  #{cartPricing.totPay}
+          .row
+            .col-xs-6
+            .col-xs-6.text-small.text-success (You save Rs.
+              span(data-role="total-discount") #{cartPricing.storeDisc + cartPricing.promoDisc}
+              | )
+            .col-xs-6.text-subtle Shipping
+            .col-xs-6.text-subtle #{cartPricing.totShip > 0 ? ('Rs. '+cartPricing.totShip) : 'Free'}
+
+            .col-xs-6.text-subtle Promo Discount
+            .col-xs-6.text-subtle Rs.
+              span(data-role='promo-discount') #{cartPricing.promoDisc}
+
+            if cartPricing.cashBackAvail > 0
+              div.row.js-cashbck-cntnr
+                div.col-xs-6.text-subtle Cashback
+                div.col-xs-6.text-subtle Rs.
+                  span(data-role="cash-back") #{cartPricing.cashBackAvail}
+
+            .js-rwrd-pts-lft(class="#{cartPricing.rwd_pnts_usd>0 ?'hide':''}",data-rwrd-pts-used='#{cartPricing.rwd_pnts_usd}')
+              div.col-xs-6.text-subtle Reward Points
+              div.col-xs-6.text-subtle
+                span.hide(data-role="reward-points-lft") #{cartPricing.tot_redeem_pts}
+
+                span(data-role='reward-points-rmng') #{cartPricing.tot_redeem_pts}
+                span(class='link js-redeem-pt txt-blue')  (Redeem)
+
+
+            .js-rwrd-pts-applied(class="#{cartPricing.rwd_pnts_usd>0 ?'':'hide'}")
+              div.col-xs-6.text-subtle Reward pointed applied
+              .col-xs-6.text-subtle
+                span(class="" data-role="reward-points-applied") #{cartPricing.rwd_pnts_usd}
+                span(class="link js-remove-pt mrgn-l-5 txt-blue")  (Remove)
+
+
+        div.col-xs-12.text-center
+          a(href=linkManager.getAddressPageUrl()).btn.btn-primary Proceed To Checkout
+
+      .card.hidden-xs
+        .card-content
+          .row
+            .col-sm-7
+              div Product
+            .col-sm-2
+              div Qty
+            .col-sm-3
+              div Offer Price
+      .cart-prdct-tbl
+        each variant in cartPricing.cartVar
+          .card.line-item(data-role="item", data-id="#{variant.sv_id}")
+            .card-content
+              .row
+                .col-sm-2.col-xs-4
+                  img(src="#{variant.pr_img.t_link}")
+
+                .col-sm-10.col-xs-8
+                  .row
+                    .col-sm-6.col-xs-12
+                      a(href="#{variant.url}") #{variant.sv_nm}
+                    .col-sm-3.col-xs-12.stepper
+                      a(href="javascript:void(0)" id="minus" class=" minus icon icon-sub-square" data-role="item-minus") -
+                      input(type="text" class="quantity" data-role="item-quantity" value="#{variant.qty}")
+                      a(href="javascript:void(0)" id="plus" class=" plus icon icon-add-square" data-role="item-plus") +
+                    .col-sm-3.col-xs-9.price Rs.
+                      span(data-role="item-offer-price")  #{variant.totOffPr}
+                      br
+                      br
+                      span(data-role="item-remove" class="icon icon-delete") Remove
+
+              if variant.vrnt_freebies.length > 0
+                each freebie in variant.vrnt_freebies
+                  .col-xs-12.cart-freebie
+                    | Free #{freebie.freebieNm} (Quantiy : #{freebie.qty})
+
+        - var orderFreebies = cartPricing.cartFreebies.length > 0 ? cartPricing.cartFreebies : []
+        if orderFreebies.length > 0
+          each cartFreebie in orderFreebies
+            div(class="disp-inln line-item full-width" data-role="item-order-freebie" data-id="#{cartFreebie.freebieId}")
+              span(class="cart-freebie") #{cartFreebie.freebieNm}, Free with this order (Quantity: #{cartFreebie.qty})
+
+        div.js-order-freebie
+
+        .card
+          .card-content
+
+
+
+            .js-prompt-cntnr.mrgn-b-5
+              div(class="couponStatus hide" data-role="success")
+                span(class="icn-success")
+                div(data-role="message")
+                div(class="mrgn-t-5" data-role="coupon-terms")
+                div(class="hide" data-role="description")
+                  span(class="desc-label") Description:
+                div.hide
+                  span(data-role="terms") Terms & Conditions:
+                div.hide
+                  span(data-role="end-date") Valid Till:
+              div(class="couponStatus hide" data-role="fail")
+                div(data-role="message")
+              div.fnt-caps.fnt-bolder.mrgn-t-18.disp-inln
+
+
+              div.add-cpn(class="#{cartPricing.appliedCouponCode == NULL?'':'hide'}")
+                div.text-center
+                  input(type="text" name="couponCode" class="js-coupon-code" placeholder="Coupon code")
+                  | &nbsp;&nbsp;
+                  a(href="javascript:void(0)" class="disp-inln apply-coupon btn btn-gray fnt-caps") Apply
+              div.remove-cpn(class="#{cartPricing.appliedCouponCode == NULL?'hide':''}")
+                .col-xs-6.text-subtle Coupon Applied
+                span(class="js-cpn-applied") #{cartPricing.appliedCouponCode}
+                | &nbsp;&nbsp;
+                a(href="" data-id="#{cartPricing.appOffId}" event="removeOffer" class="remove-coupon btn btn-gray btn-mini fnt-caps disp-inln") Remove
+
+
+
+
+
+            .prompt-offers-cnt
+              p( class=" mrgn-t-20 mrgn-b-10 fnt-caps fnt-bolder #{cartPricing.cartOffers.length > 0 ?'':'hide'}") Or apply these special offers
+
+                .js-offer-list(class="#{cartPricing.cartOffers.length > 0 ?'':'hide'}")
+                  each promptOffer in cartPricing.cartOffers
+                    .mrgn-bt-5
+                      - var offerApplied = (cartPricing.appOffId == promptOffer.id)
+                      - var isChecked = offerApplied ? true : false
+                      input.apply-offer(type="radio",data-id="#{promptOffer.id}", name="promptoffer",checked=isChecked)
+                      span.js-offer-item.mrgn-l-5  #{promptOffer.nm==null?'OFFER':promptOffer.nm}
+                      if promptOffer.terms != null
+                        .disp-inln.mrgn-l-25.fnt-sz9 Terms : #{promptOffer.terms}
+                      if offerApplied == true
+                        a.btn.remove-offer.txt-blue.fnt-sz10(href="javascript:void(0)",data-id="#{promptOffer.id}",event="removeOffer") Remove offer
+
+        script(id="orderFreebieTemplate" type="text/x-handlebars-template").
+          <div class="disp-inln line-item full-width" data-role="item-order-freebie" data-id="{{freebieId}}">
+            <span class="cart-freebie">  {{freebieNm}}, Free with this order {{#if qty }} (Quantity: {{qty}}) {{/if}}</span>
+          </div>
+        script( id="promptOfferTemplate" type="text/x-handlebars-template").
+          <div class="mrgn-bt-5">
+              <input class="apply-offer" type="radio" {{#if applied}} checked= "checked" disabled="disabled" {{else}}
+              {{/if}}
+              data-id="{{id}}" name="promptoffer"/>
+            <span class="js-offer-item mrgn-l-5">
+              {{#if nm}}
+              {{nm}}
+              {{else}}
+              OFFER
+              {{/if}}
+            </span>
+              {{#if terms}}
+              <div class="disp-inln mrgn-l-25 fnt-sz9">Terms : {{terms}}</div>
+              {{/if}}
+              <c:if test="${inSession!='false'}">
+                {{#if applied}}
+                <a href="{{target}}" data-id="{{id}}" class="btn fnt-sz10 remove-offer">
+                  Remove Offer
+                </a>
+                {{else}}
+                {{/if}}
+              </c:if>
+            </div>
+
+  link(rel="stylesheet",href="/resources/css/cart-page.css")
+
+
+block js
+  script(type="text/javascript",src="/resources/js/handlebars.min.js")
+  script(type="text/javascript",src="/resources/js/cart-page.js")
+
+  script(type="text/javascript").
+
+    $(document).unload(function () {
+      HK.shadow.hide();
+    });
+    function pageHidden(evt) {
+      HK.shadow.hide();
+    }
+    $(window).on("pagehide", pageHidden);

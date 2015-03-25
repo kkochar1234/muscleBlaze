@@ -1,0 +1,11 @@
+mixin metaDescription(result)
+  if(typeof result !== 'undefined')
+    meta( name="description" content="#{result}")
+
+mixin metaKeywords(result)
+  if(typeof result !== 'undefined')
+    meta( name="keywords" content="#{result}")
+
+mixin metaTitle(result)
+  if(typeof result !== 'undefined')
+    title #{result}

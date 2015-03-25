@@ -1,0 +1,27 @@
+mixin displayErrors(err)
+  if (typeof err !== 'undefined' && err !== null && err.length>0 && err[0] != '')
+    .alert.alert-warning
+      //-.alert-title.text-right.hide
+      //-a.close(data-dismiss="alert", href="javascript:void(0)") X
+      ul
+        if typeof err === 'string'
+          li #{error}
+        else
+          each error in err
+            li #{error}
+
+mixin displayMessages(results)
+  if results.exception == true
+    .alert.alert-warning
+      //-.alert-title.text-right.hide
+      //-a.close(data-dismiss="alert", href="javascript:void(0)") X
+      ul
+        each error in results.msgs
+          li #{error}
+  else if results.exception == false && results.msgs.length > 0
+    .alert.alert-success
+      //-.alert-title.text-right.hide
+      //-a.close(data-dismiss="alert", href="javascript:void(0)") X
+      ul
+        each msg in results.msgs
+          li #{msg}

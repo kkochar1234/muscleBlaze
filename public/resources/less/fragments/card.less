@@ -1,0 +1,39 @@
+.card{
+  background-color: @pallet-background-light;
+  border:1px solid @pallet-border-primary;
+  margin-bottom: @margin-larger;
+  margin-top: @margin-large;
+
+  &.card-inactive {
+    opacity: 0.5;
+  }
+
+  .card-header{
+    text-align: center;
+    font-size: @font-medium;
+    font-weight:600;
+    color: @pallet-header-primary;
+    line-height: @line-height-medium;
+    border-bottom: 1px solid @pallet-border-secondary;
+    padding: @padding-base;
+
+  }
+
+  .card-content{
+    padding:@padding-larger;
+  }
+
+  .card-button {
+    background-color: @pallet-background-secondary;
+    color: @pallet-color-primary;
+    cursor: pointer;
+    padding: @padding-base;
+    text-align: center;
+  }
+
+  &:after,&:before{
+    display: table;
+    content: ' ';
+    width:100%;
+  }
+}

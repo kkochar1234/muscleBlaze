@@ -1,0 +1,22 @@
+extends ../layouts/default
+append vars
+  - var hideQuickLinks = true;
+  - var jQuery = false
+  - dtLyr.pageType = req.app.get('pageConstants').LOGIN.identifier
+
+block mainContent
+  div.container-fluid
+    div.row
+      div.col-sm-4.col-sm-push-4.card
+        mixin displayErrors(req.flash('message'))
+
+        form(action='/login',method="post")
+          .form-group
+            label Email
+            input(type="text",name="email",required="true",placeholder="Email",class="form-control")
+          .form-group
+            label Password
+            input(type="password",name="password",placeholder="Password",class="form-control")
+          .form-group
+            input.btn.btn-primary.form-control(type="submit",value="Login")
+

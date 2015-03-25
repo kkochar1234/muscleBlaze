@@ -1,0 +1,80 @@
+extends ../layouts/default
+block mainContent
+  .container-fluid
+    .js-add-new
+    each data in addressData
+      .col-sm-4
+        a(href="#{linkManager.getPaymentPageUrl(data.id)}")
+          .card.usr-add-cntnr
+            .usr-add
+              .card-header.adresss-usr-name #{data.nm}
+              .card-content
+
+                span(class="adresss-id hide") #{data.id}
+                .adresss-txt #{data.line1}
+
+                if data.landmark.length > 0
+                  div.adresss-landmark #{data.landmark}
+
+                div #{data.stateNm}
+                span(class="address-state hide") #{data.stateId}
+
+                .address-cityname #{data.cityNm}
+                input(type="hidden", class="address-cityId hide", value="#{data.cityId}")
+
+                .address-pincode #{data.pin}
+
+                div.address-mobile-no #{data.cntNum}
+                if data.altCntNum.length > 0
+                  .address-alt-no #{data.altCntNum}
+
+              .card-button
+                | Deliver Here
+
+              div.mrgn-bt-10
+                div.col-sm-6.text-left
+                  input.btn(type="submit",data-scroll-target="#addNewAddress", class="no-hover disp-inln edit-address mrgn-r-20 icon icon-edit", value="Edit")
+
+                div.col-sm-6.text-right
+                  form(action=linkManager.getAddressDeleteUrl(),method="post")
+                    input(type="hidden", name="addressId", value="#{data.id}")
+                    input.btn(type="submit",class="js-validate-submit", value="Delete")
+
+    form(action='/user/addAddress',method="post",class="js-validate-form")
+      div(class="form-group" id="addNewAddress")
+        input(type="hidden", name="addressId", id="addressId")
+        label Name
+        input(type="text",name="name",required="true",placeholder="Name",data-validate="empty,specialChar", data-fieldType="name",class="form-control",id="user-name")
+
+        label Mobile no.
+        input(type="text",name="contactNo",placeholder="Mobile no.",data-validate="empty,specialChar,phone", data-fieldType="phone",class="form-control",id="contactNo")
+
+        label Alternate no.
+        input(type="text",name="alternateContactNo",placeholder="Alternate no.",data-validate="specialChar,phone", data-fieldType="phone",class="form-control",id="alternateContactNo")
+
+        label Address
+        textarea(name="line1",placeholder="Address",data-validate="empty,specialChar", data-fieldType="address",class="form-control",id="line1")
+
+        label Landmark
+        input(type="text",name="landmark",placeholder="Landmark",data-validate="specialChar", data-fieldType="landmark",class="form-control",id="landmark")
+
+        label Pincode
+        input(type="text",name="pincode",placeholder="Pincode",data-validate="empty,specialChar,pincode", data-fieldType="pincode",class="form-control", id="pincode")
+
+        label State
+        select(name="stateId",autocomplete="off",class="form-control",id="state",data-validate="empty", data-fieldType="state")
+          option(value="") -Select One-
+          each state in stateList
+            option(value=state.id) #{state.nm}
+
+        label City
+        input(type="text",name="cityName",placeholder="City",id="cityName",data-validate="empty,specialChar", data-fieldType="city",class="form-control")
+
+        input(type="hidden",name="cityId",id="city-id",class="form-control")
+
+        input.btn.btn-primary(type="submit",class="js-validate-submit", value="Deliver to this address")
+
+block js
+  script(type="text/javascript",src="/resources/js/address.js")
+  script(type="text/javascript",src="/resources/js/validation.js")
+  script(type="text/javascript",src="/resources/js/locationHandler.js")

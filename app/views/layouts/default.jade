@@ -1,0 +1,20 @@
+doctype html
+
+//add mixins for meta tags
+include ../mixins/errorMixin
+include ../mixins/listMixin
+
+
+html
+  block vars
+    - var dtLyr = {}
+  include ../includes/head
+
+  body
+    #layout-container
+      #content-container
+        include ../includes/header
+        block mainContent
+        include ../includes/footer
+    include ../includes/foot
+    block js

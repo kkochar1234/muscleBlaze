@@ -1,0 +1,25 @@
+mixin storeList(stores)
+  select.form-control(name="st",required)
+    if !securityUtil.isValidSession(req) || securityUtil.isAdmin(req)
+      option(value="") --Please select a store--
+      each store in stores
+        option(value=store.stId) #{store.stName}
+    else
+      each store in stores
+        if store.stId == securityUtil.getStoreId(req)
+          option(value=store.stId) #{store.stName}
+
+mixin rolesList()
+  select.form-control(name="roleName",required)
+    -var roles = securityUtil.getRolesList()
+    //- TODO - create utility method to get appropriate role for different cases
+    if securityUtil.isAdmin(req)
+      option(value="") --Please select a role--
+      option(value="B2B_MANAGER") Sales person
+      option(value="USER") Gym personnel
+    else if securityUtil.isB2BManager(req)
+      option(value="USER") Gym personnel
+
+
+
+

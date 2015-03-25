@@ -1,0 +1,35 @@
+extends ../layouts/default
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').CATALOG.identifier
+
+block mainContent
+  div.container-fluid
+    div.row.variants-container
+      - var variants = catalogData.results.variants
+      if variants.length == 0
+        .card
+          .card-content.text-large No products found
+      each variant in variants
+        div.col-sm-4
+          div(class="card #{(!variant.oos && variant.ordrEnbld)?'':'card-inactive' }")
+            div.card-content.item
+              a(href="#{variant.url}")
+                .row
+                  div.col-xs-4
+                    if variant.m_img != null
+                      img(src="#{variant.m_img.t_link}")
+                  div.col-xs-8
+                    .item-name #{variant.nm}
+                    div
+                      span.item-oprice Rs. #{variant.offer_pr}
+                      if variant.discount > 0
+                        span.item-discount (#{variant.discount}% discount)
+                    if (variant.expiry_date != null)
+                      div Expires in : #{moment(variant.expiry_date).format('MMM, YYYY')}
+
+  if catalogData.results.total_variants > catalogData.results.perPage
+    .text-center
+      a.btn(class="js-load-more btn-primary btn-block",data-perpage="#{catalogData.results.perPage}",data-pageno="#{catalogData.results.pageNo+1}" href="#{linkManager.getCatalogPagination(catalogData.results.categories.join('~'),'')}") Load more
+
+block js
+  script(type="text/javascript",src="/resources/js/catalog.js")

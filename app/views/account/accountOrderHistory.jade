@@ -1,0 +1,97 @@
+extends ../layouts/default
+
+block mainContent
+  .container-fluid
+    .variants-container
+      if recentOrders.length == 0
+        .card
+          .card-content.text-large No orders found
+      each order in recentOrders
+        .card.js-order
+          .card-header
+            .row
+              .col-sm-4.text-left #{order.gId}
+              .col-sm-4.text-left #{moment(order.orderDt).format('dddd, MMMM Do YYYY')}
+              .col-sm-4.text-left Rs. #{order.orderAmount}
+            if order.isCancellable
+              button.btn.btn-block.js-cancel CANCEL
+              .cancel-order-form.hide
+                hr
+                input(type='hidden',value=order.gId,name="gId")
+                .form-group
+                  select( class="js-primary-reason form-control full-width fnt-sz14" name="reason")
+                    option( value="-1") Select your reason
+                    each reason,index in recentOrders.cancelReasons
+                      option( value=index) #{reason}
+                .form-group
+                  textarea( name="comments" class="form-control full-width fnt-sz14" placeholder="Describe your problem...")
+                .form-group
+                  button.btn.js-cancel-confirm(data-default="Confirm" data-inprocess="Processing") Confirm
+          .card-content
+            each item in order.oprLineItems
+              .row
+                .col-xs-3
+                  if item.primaryImage != null
+                    img(src="#{item.primaryImage.xt_link}")
+                .col-xs-9
+                  a(href="#{item.productPageUrl}") #{item.sv_nm}
+                  .text-large.text-success #{item.status}
+
+
+block js
+  script.
+    var urls = {
+      cancelOrder : "/api/order/cancel"
+    };
+    $('.variants-container').on('click','.js-cancel',function(e){
+      var src = $(this),
+          parent  = src.parents('.js-order'),
+          form = parent.find('.cancel-order-form');
+
+      form.toggleClass('hide');
+    });
+
+    $('.variants-container').on('click','.js-cancel-confirm',function(e){
+      var src = $(this),
+
+          form = src.parents('.cancel-order-form'),
+          cancelData = {},
+          orderId = form.find('[name=gId]').val(),
+          reason = form.find('[name=reason]').val();
+
+
+    if(reason <1){
+      HK.alert({content:'Please select reason for return'});
+      return;
+    }
+    if(src.hasClass('disabled')){
+      return HK.alert({content:'Still processing the request'});
+    }
+
+    src.text(src.attr('data-inprocess')).addClass('disabled');
+    cancelData.gatewayOrderId = orderId;
+    cancelData.reason = reason;
+    cancelData.comments = form.find('[name = "comments"]').val();
+
+    HK.Ajax.customReq({
+      url : urls.cancelOrder,
+      type: "POST",
+      data: JSON.stringify(cancelData),
+      success: function (responseData) {
+        if(responseData.results.exception==false){
+          form.remove();
+          HK.alert({content:'Order cancelled'});
+
+          setTimeout(function(){location.reload();},500);
+        } else{
+          HK.alert({content:'Failed to cancel order, please try again after some time'})
+          src.text(src.attr('data-default')).removeClass('disabled');
+        }
+      },
+      error : function(json) {
+        HK.alert({content:'Failed to cancel order, please try again after some time'})
+        src.text(src.attr('data-default')).removeClass('disabled');
+      }
+      });
+    })
+

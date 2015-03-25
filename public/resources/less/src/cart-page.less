@@ -1,0 +1,83 @@
+@import '../variables';
+
+.total-payable{
+  font-size:@font-medium;
+  font-weight: 600;
+  .amount{
+    color:@pallet-color-important
+  }
+
+}
+
+.stepper input {
+  position: relative;
+  float: left;
+  width: 23px;
+  border: 1px solid #ddd;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.stepper a {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  float: left;
+  width: 17px;
+  text-align: center;
+  top: 8px;
+  cursor: pointer;
+  padding-left: 1px;
+  padding-right: 1px;
+  font-size:@font-large;
+  font-weight:600;
+
+}
+
+.icon{background:white no-repeat;display:inline-block;height:32px;width:32px;vertical-align:middle}
+
+/*Stepper CSS for cart*/
+.stepper{
+  white-space: nowrap;
+  .minus{
+    width:28px;
+    border:0;
+    padding:0;
+  }
+  .plus{
+    width:28px;
+    border:0;
+    padding:0;
+  }
+  .quantity{
+    width:32px;
+    height:24px;
+    margin-left:0;
+    margin-right:0;
+    top:8px;
+    padding: 0px;
+  }
+}
+
+.couponStatus {
+  &[data-role=fail] {
+    [data-role=message]{
+      color: @pallet-color-warning;
+    }
+  }
+
+  [data-role=message] {
+    color: @pallet-color-success;
+  }
+
+}
+
+.cart-freebie{
+  color: #090;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 0.9em;
+}

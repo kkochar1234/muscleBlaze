@@ -1,0 +1,33 @@
+extends ../layouts/default
+
+block mainContent
+  .container-fluid
+    mixin displayErrors(err)
+    if error && error.length > 0
+      | #{error}
+    else
+      if paymentMode && paymentMode.exception == true
+        .alert.alert-warning
+          ul
+            each msg in paymentMode.msgs
+              li #{msg}
+      else
+        .card
+          .card-content
+            div.col-sm-4
+              .row
+              .row
+                h3 Cash on Delivery
+            div.col-sm-4
+              .div
+                strong Verify Your Contact No
+              each paymentMo in paymentMode.paymentModes
+                if (paymentMo.name == 'COD')
+                  form(action="/make/payment",method="POST")
+                    input(type="hidden" name="contactName" value="#{address.address.nm}")
+                    input(type="text" name="contactNo" value="#{address.address.cntNum}")
+                    input(type="hidden" name="addressId" value="#{address.address.id}")
+                    input(type="hidden" name="amount" value="#{cartPricing.totPay}")
+                    .div
+                      .col-sm-4.text-center
+                        input.btn.btn-secondary.center-block(type="submit",value="Place order")

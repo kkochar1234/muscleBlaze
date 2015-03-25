@@ -1,0 +1,18 @@
+each variant in variants
+  div.col-sm-4
+      div(class="card #{variant.oos && !variant.orderEnabled?'card-inactive':'' }")
+        div.card-content.item
+          a(href="#{variant.url}")
+            .row
+              div.col-xs-4
+                if variant.m_img != null
+                  img(src="#{variant.m_img.t_link}")
+              div.col-xs-8
+                .item-name #{variant.nm}
+                div
+                  span.item-oprice Rs. #{variant.offer_pr}
+                  if variant.discount > 0
+                    span.item-discount (#{variant.discount}% discount)
+                if (variant.expiry_date != null)
+                  div Expires in : #{moment(variant.expiry_date).format('MMM, YYYY')}
+

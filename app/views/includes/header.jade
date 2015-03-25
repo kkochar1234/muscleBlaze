@@ -1,0 +1,11 @@
+.container-fluid
+  .header.row
+    div.col-xs-2
+      a.home-icon(href=linkManager.getHomeUrl())
+    div.col-xs-10.text-right
+      if securityUtil.isValidSession(req)
+        span.name-icon Hi #{securityUtil.getUserName(req)}
+        a.cart-icon(href=linkManager.getCartUrl())
+        a.user-icon(href=linkManager.getOrderHistoryUrl())
+        a.logout-icon(href=linkManager.getLogoutUrl())
+

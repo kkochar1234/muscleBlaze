@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+append vars
+  - var hideQuickLinks = true;
+block mainContent
+  div.container-fluid
+    div.row
+      div.col-sm-4.col-sm-push-4.card
+        //mixin displayMessages(results)
+        mixin displayErrors(req.flash('message'))
+        form(action='/signUp',method="post")
+          .form-group
+            label Name
+            input(type="text",name="name",required="true",placeholder="Name",class="form-control")
+          .form-group
+            label Email Id
+            input(type="text",name="email",required,placeholder="Email",class="form-control")
+          .form-group
+            label Password
+            input(type="password",name="password",required,placeholder="Password",class="form-control")
+          .form-group
+            label Confirm Password
+            input(type="password",name="cpassword",required,placeholder="Confirm Password",class="form-control")
+          .form-group
+            input.btn.btn-primary.form-control(type="submit",value="Create Account")

@@ -1,0 +1,53 @@
+extends ../layouts/default
+block mainContent
+  div.container-fluid
+    mixin displayErrors(req.flash('message'))
+
+    - var users = results.userList ? results.userList : []
+
+    .card
+      .card-content
+        form(id='loginForm', action='/assume/login',method="post")
+          .form-group
+            label Login
+            input(type="text",name="login",required="true",placeholder="enter email ID..",class="form-control")
+          .form-group
+            input.btn.btn-primary.form-control(type="submit",value="Login")
+
+    ul.list
+      li.marker Mapped Users span.js-user-count.
+      if users.length == 0
+        li
+          | No mapped users found
+      else
+        li
+          input.form-control(type="search",name="filterUsers",placeholder="filter users")
+        each user in users
+
+          li.js-user
+            .js-name #{user.name}
+            a.js-email(href="javascript:void(0)", data-login="#{user.login}").assume-login #{user.login}
+
+block js
+  script(type="text/javascript").
+
+    $('.assume-login').click(function(){
+      var userLogin = $(this).attr('data-login');
+      $('[name=login]').val(userLogin);
+      $('#loginForm').submit();
+    });
+    $('[name=filterUsers]').on('keyup',function(){
+       var str = $(this).val().toLowerCase();
+       $.each($('.js-user'),function(){
+         var ele = $(this),
+             name = ele.find('.js-name').text().toLowerCase(),
+             email = ele.find('.js-email').text().toLowerCase();
+         if(name.indexOf(str) >= 0 || email.indexOf(str) >=0){
+            ele.removeClass('hide')
+         } else {
+            ele.addClass('hide')
+         }
+
+       })
+    })
+

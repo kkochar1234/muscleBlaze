@@ -1,0 +1,35 @@
+//contains generic constants
+
+var PAGE_CONSTANTS = {
+  'BRAND_LP_IDENTIFIER' : 'BR-',
+  'NAV_KEY' : 'navKey',
+  'VARIANT_LP_IDENTIFIER' : 'VRNT-',
+  'STORE_PRODUCT_KEY_PREFIX' : 'SP-',
+  'STORE_VARIANT_KEY_PREFIX' : '/sv',
+  'BRAND_KEY_PREFIX' : '/brand'
+
+};
+
+var PAYMENT_CONSTANTS = {
+  'COD_PAYMENT_MODE_ID' : 40,
+  'COD_PAYMENT_OPTION' : 'PG999'
+};
+
+var PLATFORM_CONSTANTS = {
+  'DESKTOP' : 1,
+  'MOBILE' : 2
+};
+
+var DEFAULT_VALUES = {
+   'DEFAULT_STORE_ID' : 1
+};
+
+Object.freeze(PAGE_CONSTANTS);
+Object.freeze(PAYMENT_CONSTANTS);
+Object.freeze(PLATFORM_CONSTANTS);
+Object.freeze(DEFAULT_VALUES);
+
+module.exports.PAGE_CONSTANTS = PAGE_CONSTANTS;
+module.exports.PAYMENT_CONSTANTS = PAYMENT_CONSTANTS;
+module.exports.PLATFORM_CONSTANTS = PLATFORM_CONSTANTS;
+module.exports.DEFAULT_VALUES = DEFAULT_VALUES;

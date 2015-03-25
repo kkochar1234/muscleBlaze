@@ -1,0 +1,31 @@
+@import "../variables";
+
+.btn {
+  border:none;
+  box-shadow: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  padding: @padding-large @padding-larger;
+  display: inline-block;
+  background-color: @pallet-button-default;
+  color: @pallet-color-primary;
+  border-top: 1px solid @pallet-border-light;
+
+  &.btn-primary {
+    background-color: @pallet-button-primary;
+    color: @pallet-color-light;
+  }
+  &.btn-secondary {
+    background-color: @pallet-button-secondary;
+    color: @pallet-color-light;
+  }
+  &.btn-special {
+    background-color: @pallet-button-special;
+    color: @pallet-color-light;
+  }
+  &.btn-block {
+    display: block;
+  }
+}
