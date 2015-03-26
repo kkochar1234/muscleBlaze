@@ -34,7 +34,7 @@ app.use(favicon(config.root + '/dist/public/resources/favicon.ico'));
 
 
     //for error case no logging is required, its done on APIUtil
-    res.cfaRender = function(view,err,data,req,res){
+    res.Render = function(view,err,data,req,res){
       if(err){
           if(err.statusCode >= 500){
             res.status(err.statusCode)

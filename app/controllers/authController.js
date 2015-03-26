@@ -10,7 +10,7 @@ var authService = require("../services/authService"),
 exports.login = function(req,res){
 
   //req.body.st = 5;
-  return res.cfaRender('auth/login', null,  null ,req,res);
+  return res.Render('auth/login', null,  null ,req,res);
   //authService.setStoreID(req, cb);
   //authService.getStoreList(req,cb);
 
@@ -55,7 +55,7 @@ exports.logout = function(req, res){
 
 exports.signUp = function(req,res){
 
-    res.cfaRender('auth/signUp', null ,null ,req,res)
+    res.Render('auth/signUp', null ,null ,req,res)
 }
 
 /**
@@ -66,7 +66,7 @@ exports.signUp = function(req,res){
 exports.validateSignUp = function(req, res){
 
   function cb(err,data){
-    //res.cfaRender('auth/signUp', err,data,req,res)
+    //res.Render('auth/signUp', err,data,req,res)
 
 
     if (err) {
@@ -88,7 +88,7 @@ exports.assumeLogin = function(req,res){
 
   if(securityUtil.isB2BManager(req)){
     function callback(err, data) {
-      res.cfaRender('auth/assumeLogin', err,data,req,res)
+      res.Render('auth/assumeLogin', err,data,req,res)
     }
     authService.getMappedUsers(req, callback);
   } else {

@@ -5,7 +5,7 @@ exports.getAddressForUser = function(req, res) {
 
   function cb(err, data) {
 
-    return res.cfaRender('address/address',err, {addressData : data.addressList, stateList: data.stateList},req,res);
+    return res.Render('address/address',err, {addressData : data.addressList, stateList: data.stateList},req,res);
 
   }
 
@@ -16,7 +16,7 @@ exports.getAddressForUser = function(req, res) {
 exports.getPincodeDetails = function(req, res) {
   function cb(err, pincodeData) {
 
-    res.cfaRender(null, err,pincodeData,req,res)
+    res.Render(null, err,pincodeData,req,res)
 
   }
 

@@ -17,7 +17,7 @@ module.exports={
   },
   logs : {
     accessLogFile: path.resolve(projectPath, '../logs/access.log'),
-    applicationLogFile: path.resolve(projectPath, '../logs/cfa.log'),
+    applicationLogFile: path.resolve(projectPath, '../logs/muscleBlaze.log'),
     databaseLogFile: path.resolve(projectPath, '../logs/db.log'),
     level: "info",
     maxsize: 20971520

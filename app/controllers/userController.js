@@ -6,7 +6,7 @@ exports.getRecentOrdersForUser = function(req, res) {
     if(result){
       result.cancelReasons = require('../constants/orderCancelReasons')
     }
-    return res.cfaRender('account/accountOrderHistory',err, {recentOrders : result},req,res);
+    return res.Render('account/accountOrderHistory',err, {recentOrders : result},req,res);
 
   }
 
@@ -20,7 +20,7 @@ exports.cancelOrder = function(req, res) {
 
   function cb(err, result) {
 
-    return res.cfaRender(null,err, result,req,res);
+    return res.Render(null,err, result,req,res);
   }
 
   userService.cancelOrder(req, cb);

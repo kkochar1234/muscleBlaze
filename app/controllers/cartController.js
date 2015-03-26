@@ -3,7 +3,7 @@ var cartService = require('../services/cartService')
 exports.addToCart = function(req,res){
 
   function cb(err, addToCartResponse) {
-    res.cfaRender(null,err,addToCartResponse,req,res)
+    res.render(null,err,addToCartResponse,req,res)
   }
 
   cartService.addToCartService(req, cb)
@@ -14,7 +14,7 @@ exports.getCartData = function(req, res) {
 
   function cb (err, cartInfo) {
 
-      res.cfaRender('cart/cart', err,cartInfo,req,res)
+      res.render('cart/cart', err,cartInfo,req,res)
   }
 
   cartService.getCartData(req, cb)
@@ -25,7 +25,7 @@ exports.updateCart = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 
@@ -37,7 +37,7 @@ exports.removeVariantFromCart = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 
@@ -49,7 +49,7 @@ exports.applyCoupon = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 
@@ -61,7 +61,7 @@ exports.applyOffer = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 
@@ -73,7 +73,7 @@ exports.removeOffer = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 
@@ -85,7 +85,7 @@ exports.redeemRewardPoints = function(req, res) {
 
   function cb (err, data) {
 
-    res.cfaRender(null, err,data,req,res)
+    res.render(null, err,data,req,res)
 
   }
 

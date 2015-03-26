@@ -3,7 +3,7 @@ var catalogService = require('../services/catalogService')
 exports.getCatalogData = function(req,res){
 
   function cb(err, data) {
-    return res.cfaRender('catalog/catalog',err, {catalogData : data},req,res)
+    return res.Render('catalog/catalog',err, {catalogData : data},req,res)
   }
 
   catalogService.getCatalogData(req, cb)
@@ -13,7 +13,7 @@ exports.getCatalogData = function(req,res){
 exports.getCatalogLoadMoreData = function(req,res){
 
   function cb(err, variants) {
-    return res.cfaRender('catalog/catalogPagination',err, {variants : variants},req,res)
+    return res.Render('catalog/catalogPagination',err, {variants : variants},req,res)
   }
 
   catalogService.getCatalogLoadMoreData(req, cb)
@@ -31,7 +31,7 @@ exports.getProductData = function(req,res){
       }
     }
 
-      return res.cfaRender(view,err, productData,req,res)
+      return res.Render(view,err, productData,req,res)
   }
 
   catalogService.getProductData(req, cb)

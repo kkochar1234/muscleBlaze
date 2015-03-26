@@ -21,7 +21,7 @@ var PLATFORM_CONSTANTS = {
 };
 
 var DEFAULT_VALUES = {
-   'DEFAULT_STORE_ID' : 1
+   'DEFAULT_STORE_ID' : 9
 };
 
 Object.freeze(PAGE_CONSTANTS);
