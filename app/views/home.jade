@@ -1,26 +1,36 @@
 extends layouts/default
 append vars
-  - dtLyr.pageType = req.app.get('pageConstants').HOME.identifier
+    - dtLyr.pageType = req.app.get('pageConstants').HOME.identifier
 block mainContent
-  div.container-fluid
-    - var menuNodes = results.tpMenuNode
-    ul.list
-      li.marker Shop By Category
-      each menuNode in menuNodes
-        -var type = menuNode.type
-        if type == '1'
-          li.list-plain #{menuNode.nm}
-            ul.list
-              each childNode in menuNode.ch
-                li
-                  a(href="#{childNode.url}") #{childNode.nm}
-    ul.list
-      li.marker Shop By Concern
-      each menuNode in menuNodes
-        -var type = menuNode.type
-        if type == '2'
-          li.list-plain #{menuNode.nm}
-            ul.list
-              each childNode in menuNode.ch
-                li
-                  a(href="#{childNode.url}") #{childNode.nm}
+    div.container-fluid
+        - var menuNodes = results.tpMenuNode
+            ul.basic
+                li.first_level
+                   a(href='#') Shop By Category
+                   div.inside_second
+                        each menuNode in menuNodes
+                          -var type = menuNode.type
+                           if type == '1'
+                             ul.second_basic
+                               li.second_level
+                                 a(href='#')  #{menuNode.nm}
+                                 div.inside_third
+                                   ul.third_basic
+                                    each childNode in menuNode.ch
+                                        li.third_level
+                                            a(href="#{childNode.url}") #{childNode.nm}
+
+                li.first_level
+                    a(href='#') Shop By Concern
+                    div.inside_second
+                        each menuNode in menuNodes
+                            -var type = menuNode.type
+                            if type == '2'
+                                ul.second_basic
+                                  li.second_level
+                                    a(href='#') #{menuNode.nm}
+                                    div.inside_third
+                                      ul.third_basic
+                                        each childNode in menuNode.ch
+                                            li.third_level
+                                                a(href="#{childNode.url}") #{childNode.nm}
