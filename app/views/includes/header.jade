@@ -3,40 +3,6 @@
     div.col-xs-2
       a.home-icon(href=linkManager.getHomeUrl())
     div.col-xs-10.text-right
-      span.name
-        - var menuNodes = results.tpMenuNode
-                ul.basic
-                    li.first_level
-                        a(href='#') Shop By Category
-                        div.inside_second
-                            each menuNode in menuNodes
-                                -var type = menuNode.type
-                                    if type == '1'
-                                        ul.second_basic
-                                            li.second_level
-                                                a(href='#')  #{menuNode.nm}
-                                                div.inside_third
-                                                    ul.third_basic
-                                                        each childNode in menuNode.ch
-                                                            li.third_level
-                                                                a(href="#{childNode.url}") #{childNode.nm}
-
-                    li.first_level
-                        a(href='#') Shop By Concern
-                        div.inside_second
-                            each menuNode in menuNodes
-                                -var type = menuNode.type
-                                if type == '2'
-                                    ul.second_basic
-                                        li.second_level
-                                            a(href='#') #{menuNode.nm}
-                                            div.inside_third
-                                                ul.third_basic
-                                                    each childNode in menuNode.ch
-                                                        li.third_level
-                                                            a(href="#{childNode.url}") #{childNode.nm}
-                    li.first_level
-                        a(href='#') About
       if securityUtil.isValidSession(req)
         span.name-icon Hi #{securityUtil.getUserName(req)}
         a.cart-icon(href=linkManager.getCartUrl())
