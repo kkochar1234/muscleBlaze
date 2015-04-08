@@ -6,6 +6,9 @@ module.exports={
   app: {
     name: 'MuscleBlaze'
   },
+  wpAPI : {
+    url : "https://public-api.wordpress.com/rest/v1/sites/68156619"
+  },
   hkAPI : {
     url : "http://api.healthkart.com/api",
     accessKey : 6369092314

@@ -29,13 +29,14 @@ exports.validateLogin = function(req, res){
       return res.redirect('/login')
     } else {
       console.log("No error received while validating.")
-      securityUtil.setSessionForUser(req,data)
+      securityUtil.setSessionForUser(req,data);
+      //TODO : have to set nav_key ('HM') in request.
+      //getBanners(req,res);
       return res.redirect('/?login=true')
     }
   }
   authService.validateLoginService(req,cb)
 }
-
 
 /**
  * End a user session when user choose to end session, redirects user to login screen

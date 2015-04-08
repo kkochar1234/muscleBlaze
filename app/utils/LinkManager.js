@@ -2,10 +2,15 @@ var uriTemplate = require('uritemplate'),
     routesConstants = require('../constants/routesConstants'),
     appConfig = require('../appConfig'),
     _ = require('underscore'),
-    appConstants = require('../constants/appConstants')
+    appConstants = require('../constants/appConstants'),
+    menuService = require('../services/menuService');
 
 exports.getApiUrl = function(URI,params){
   return getURL(appConfig.hkAPI.url+URI, params)
+}
+
+exports.getWordPressUrl = function(URI,params){
+  return getURL(appConfig.wpAPI.url+URI, params)
 }
 
 exports.getWebUrl = function(URI,params){
@@ -30,11 +35,29 @@ exports.getMenuNodeUrl = function(navKey, urlFragment) {
       url += getBrandPageUrl(navKey, urlFragment)
     } else {
       //generic landing page
-      url += getGenericLandingPageUrl(navKey, urlFragment)
+      //url += getGenericLandingPageUrl(navKey, urlFragment)
+      url += getMbProductUrl(navKey, urlFragment);
     }
   }
   return url;
 }
+
+var getMbPostsId = function(urlFragment) {
+  var map = {};
+  //TODO : Add entries for menuTree.
+  map["/supplements/supplements"] =  "877";
+  map["/protein-bar"] = "885";
+  return map[urlFragment];
+}
+
+var getMbProductUrl = function(navKey, urlFragment) {
+  var mbProductUrl = appConfig.web.url;
+  urlFragment.toString()
+  var mbNavKey = getMbPostsId(urlFragment);
+  mbProductUrl += appConstants.PAGE_CONSTANTS.MB_PRODUCT_PREFIX  +  "/" + mbNavKey + "/";
+  return mbProductUrl;
+}
+
 
 var getBrandPageUrl = function(navKey, brandUrlFragment) {
   var brandPageUrl = appConstants.PAGE_CONSTANTS.BRAND_KEY_PREFIX;
@@ -53,6 +76,21 @@ exports.getProductPageUrl = function(navKey, urlFragment) {
   productPageUrl += appConstants.PAGE_CONSTANTS.STORE_VARIANT_KEY_PREFIX;
   productPageUrl += getGenericLandingPageUrl(navKey, urlFragment);
   return productPageUrl;
+}
+
+exports.getConcernPageUrl = function(navKey, urlFragment) {
+  var mbProductUrl = appConfig.web.url;
+  urlFragment.toString()
+  var mbNavKey = getMbConcernId(urlFragment);
+  mbProductUrl +=  "/" + mbNavKey + "/";
+  return mbProductUrl;
+}
+
+var getMbConcernId = function(urlFragment) {
+  var map = {};
+  //TODO : Add entries for menuTree.
+  map["/supplements"] =  "1200";
+  return map[urlFragment];
 }
 
 exports.getCssUrl = function(filePath){

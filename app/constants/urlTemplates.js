@@ -32,7 +32,11 @@ module.exports = {
 
   SIGNUP : {url : "/user/signup", method : "POST", params : []},
   MAPPED_USERS : {url : "/user/mappedUsers/{st}/{userId}", method : "GET", params : []},
-  REWARD_POINTS_INFO : {url : "/userPoints/reward/{st}/{userId}/points", method : "GET", params : []}
+  REWARD_POINTS_INFO : {url : "/userPoints/reward/{st}/{userId}/points", method : "GET", params : []},
+
+  PAGE_BANNERS : {url : "/page/data/{st}/{navKey}", method : "GET", params : {}},
+
+  PRODUCT_PAGE : {url : "/posts/{postId}", method : "GET", params : {}}
 
 }
 

@@ -1,5 +1,31 @@
-if hideQuickLinks != true
-  ul.list
-    li.marker Quick Links
-    li
-      a(href=linkManager.getAssumeLoginUrl()) Assumed login
+.x-colophon.bottom(role='contentinfo')
+  .x-container-fluid.max.width
+    ul#menu-footer.x-nav
+      //li#menu-item-1775.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1775
+        a(href='http://www.muscleblaze.com/about-us/') Contact Us
+      //li#menu-item-634.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-634
+        a(href='http://www.muscleblaze.com/store-locator-2/') Where to Buy
+      //li#menu-item-1808.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1808
+        a(href='http://www.muscleblaze.com/barcodes/') Barcodes
+      li#menu-item-1750.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-1750
+        a(target='_blank', href='http://www.facebook.com/muscleblaze') Facebook
+      li#menu-item-1751.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-1751
+        a(target='_blank', href='http://twitter.com/muscleblaze') Twitter
+      li#menu-item-1752.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-1752
+        a(target='_blank', href='http://youtube.com/muscleblaze') Youtube
+    .x-colophon-content
+      p
+        img(src='/resources/images/seal.png')
+      //'http://www.muscleblaze.com/wp-content/uploads/2014/04/seal.png')
+      -var homeUrl = linkManager.getHomeUrl()
+      p(style='letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; filter: alpha(opacity=50);')
+        | Copyright 2014
+        a(href=homeUrl, title='MuscleBlaze') MuscleBlaze.com
+        br
+        span(style='font-size:7px;') Premium Range of Quality Supplements. 100% Vegetarian & Easy to Digest.
+
+
+link(rel="stylesheet",href="/resources/css/style.css")
+//link(rel="stylesheet",href="/resources/css/renew.css")
+//link(rel="stylesheet",href="/resources/css/renew1.css")
+//link(rel="stylesheet",href="/resources/css/home1.css")

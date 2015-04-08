@@ -1,11 +1,51 @@
-.container-fluid
-  .header.row
-    div.col-xs-2
-      a.home-icon(href=linkManager.getHomeUrl())
-    div.col-xs-10.text-right
-      if securityUtil.isValidSession(req)
-        span.name-icon Hi #{securityUtil.getUserName(req)}
-        a.cart-icon(href=linkManager.getCartUrl())
-        a.user-icon(href=linkManager.getOrderHistoryUrl())
-        a.logout-icon(href=linkManager.getLogoutUrl())
+div.container-fluid
+  .x-navbar-wrap
+    .x-navbar
+      .x-navbar-inner.x-container-fluid.max.width
+        h1.visually-hidden
+        -var homeUrl = linkManager.getHomeUrl()
+        a.x-brand.img(href=homeUrl, title='Logo')
+          img(src='/resources/images/mb-logo.png', alt='Logo')
+          //img(src='http://www.muscleblaze.com/wp-content/uploads/2014/02/mb-logo.png', alt='Logo')
+        - var menuNodes = productMenu.results.tpMenuNode
+        ul#menu-navbar.x-nav.sf-menu
+          li.first_level
+            a(href='#') Products
+            div.inside_second
+              each menuNode in menuNodes
+                -var type = menuNode.type
+                if type == '1'
+                  ul.second_basic
+                    li.second_level
+                      if(menuNode.ch && menuNode.ch.length )
+                        a(href='#')  #{menuNode.nm}
+                        div.inside_third
+                          ul.third_basic
+                            each childNode in menuNode.ch
+                              li.third_level
+                                a(href="#{childNode.url}") #{childNode.nm}
+                      else
+                        a(href="#{menuNode.url}") #{menuNode.nm}
 
+          li.first_level
+            a(href='#') Goal
+            div.inside_second
+              each menuNode in menuNodes
+                -var type = menuNode.type
+                if type == '2'
+                  ul.second_basic
+                    li.second_level
+                      a(href='#') #{menuNode.nm}
+                      div.inside_third
+                        ul.third_basic
+                          each childNode in menuNode.ch
+                            li.third_level
+                              a(href="#{childNode.url}") #{childNode.nm}
+          //li.first_level
+            a(href='http://www.muscleblaze.com/events/') Events
+          //li.first_level
+            a(href='http://www.muscleblaze.com/mb-vault2/') Vault
+          //li.first_level
+            a(href='http://www.muscleblaze.com/store-locator-2/') Where to Buy
+          //li.first_level
+            a(href='http://www.muscleblaze.com/about-us/') About Us

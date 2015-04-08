@@ -74,7 +74,6 @@ function isValidLogin(err,da){
 
 }
 
-
 exports.validateSignUp = function(req, cb){
   var name = req.body.name,
       email = req.body.email ?req.body.email: '',

@@ -1,14 +1,13 @@
-var menuService = require('../services/menuService')
-
+var homeService = require('../services/homeService');
 module.exports.home = function(req,res){
 
 
 
   function cb(err, resp) {
-      return res.Render('home',err,resp,req,res)
+      return res.Render('home',err, {productMenu: resp.productMenu, bannerDetails: resp.bannerDetails },req,res)
   }
 
-  menuService.getMenuNodes(req, cb)
+  homeService.renderHomePage(req, cb)
 
 }
 

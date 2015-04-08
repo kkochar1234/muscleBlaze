@@ -7,7 +7,9 @@ var dirList = {
       srcJade: 'app/views/', //source path for jade files
       distJade: 'dist/views/', //distribution path for jade file
       srcAssets: 'public/resources/', //source path for static resources
-      distAssets: 'dist/public/resources/' //distribution path for static resources
+      distAssets: 'dist/public/resources/', //distribution path for static resources
+      srcMBAssets: 'public/wp-content/', //source path for static resources
+      distMBAssets: 'dist/public/wp-content/' //distribution path for static resources
     },
     config = {
       /**
@@ -61,6 +63,12 @@ module.exports = function (grunt) {
             cwd: dirList.srcJade,
             src: ['**'],
             dest: dirList.distJade
+          },
+          {
+            expand: true,
+            cwd: dirList.srcMBAssets,
+            src: ['**'],
+            dest: dirList.distMBAssets
           }
         ]
       }

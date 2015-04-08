@@ -30,7 +30,10 @@ var routes = {
     PAYMENT_MAKE : '/make/payment',
     ORDER_HISTORY : '/user/order/history',
     SIGN_UP : '/signUp',
-    ASSUME_LOGIN : '/assume/login'
+    ASSUME_LOGIN : '/assume/login',
+
+    MB_PRODUCTS : '/products/:productName',
+    MB_CONCERN : '/:concern'
 
   }
 };

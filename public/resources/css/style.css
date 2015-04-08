@@ -1,0 +1,632 @@
+/* =============================================================================
+// Renew specific styles.
+// ========================================================================== */
+
+/*
+body {
+    background: #000000 url() center top repeat;
+}
+*/
+
+a,
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+.x-comment-time:hover,
+#reply-title small a,
+.comment-reply-link:hover,
+.x-comment-author a:hover,
+.x-close-content-dock:hover i,
+.woocommerce .price > .amount,
+.woocommerce .price > ins > .amount,
+.woocommerce-page .price > .amount,
+.woocommerce-page .price > ins > .amount,
+.woocommerce li.product .entry-header > a:first-child:hover h3,
+.woocommerce-page li.product .entry-header > a:first-child:hover h3,
+.woocommerce .star-rating:before,
+.woocommerce-page .star-rating:before,
+.woocommerce .star-rating span:before,
+.woocommerce-page .star-rating span:before {
+    color: #f6c506;
+}
+
+a:hover,
+#reply-title small a:hover,
+.x-recent-posts a:hover .h-recent-posts {
+    color: #4c4c4c;
+}
+
+a.x-img-thumbnail:hover,
+li.bypostauthor > article.comment,
+.woocommerce div.product .woocommerce-tabs .x-comments-area li.comment.bypostauthor .x-comment-header .star-rating-container,
+.woocommerce-page div.product .woocommerce-tabs .x-comments-area li.comment.bypostauthor .x-comment-header .star-rating-container {
+    border-color: #f6c506;
+}
+
+.flex-direction-nav a,
+.flex-control-nav a:hover,
+.flex-control-nav a.flex-active,
+.x-dropcap,
+.x-skill-bar .bar,
+.x-pricing-column.featured h2,
+.h-comments-title small,
+.pagination a:hover,
+.x-entry-share .x-share:hover,
+.entry-thumb,
+.widget_tag_cloud .tagcloud a:hover,
+.widget_product_tag_cloud .tagcloud a:hover,
+.x-highlight,
+.x-recent-posts .x-recent-posts-img,
+.x-recent-posts .x-recent-posts-img:before,
+.x-portfolio-filters,
+.widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce .onsale,
+.woocommerce-page .onsale,
+.woocommerce div.product .woocommerce-tabs .x-comments-area li.comment.bypostauthor article.comment:before,
+.woocommerce-page div.product .woocommerce-tabs .x-comments-area li.comment.bypostauthor article.comment:before {
+    background-color: #f6c506;
+}
+
+.x-recent-posts a:hover .x-recent-posts-img,
+.x-portfolio-filters:hover {
+    background-color: #4c4c4c;
+}
+
+.x-topbar .p-info,
+.x-topbar .p-info a,
+.x-topbar .x-social-global a {
+    color: #000000;
+}
+
+.x-topbar .p-info a:hover {
+    color: #000000;
+}
+
+.x-brand,
+.x-brand:hover,
+.x-navbar .x-nav > li > a,
+.x-navbar .x-nav > li:before,
+.x-navbar .sub-menu li > a,
+.x-navbar .x-navbar-inner .x-nav-collapse .x-nav > li > a:hover,
+.x-navbar .x-navbar-inner .x-nav-collapse .sub-menu a:hover,
+.tp-leftarrow:before,
+.tp-rightarrow:before,
+.tp-bullets.simplebullets.navbar .bullet,
+.tp-bullets.simplebullets.navbar .bullet:hover,
+.tp-bullets.simplebullets.navbar .bullet.selected,
+.tp-bullets.simplebullets.navbar-old .bullet,
+.tp-bullets.simplebullets.navbar-old .bullet:hover,
+.tp-bullets.simplebullets.navbar-old .bullet.selected {
+    color: #ffffff;
+}
+
+.x-navbar .sub-menu li:before,
+.x-navbar .sub-menu li:after {
+    background-color: #ffffff;
+}
+
+.x-navbar .x-navbar-inner .x-nav-collapse .x-nav > li > a:hover,
+.x-navbar .x-navbar-inner .x-nav-collapse .sub-menu a:hover,
+.x-navbar .x-navbar-inner .x-nav-collapse .x-nav .current-menu-item > a {
+    color: #f6c506;
+}
+
+.x-navbar .x-nav > li > a:hover,
+.x-navbar .x-nav > li.current_page_item > a {
+    -webkit-box-shadow: 0 2px 0 0 #f6c506;
+    box-shadow: 0 2px 0 0 #f6c506;
+}
+
+.x-btn-navbar,
+.x-btn-navbar:hover {
+    color: #000000;
+}
+
+.x-colophon.bottom,
+.x-colophon.bottom a,
+.x-colophon.bottom .x-social-global a {
+    color: #f6c506;
+}
+
+.x-topbar {
+    background-color: #f6c506;
+}
+
+.x-navbar,
+.x-navbar .sub-menu,
+.tp-bullets.simplebullets.navbar,
+.tp-bullets.simplebullets.navbar-old,
+.tp-leftarrow.default,
+.tp-rightarrow.default {
+    background-color: #000000 !important;
+}
+
+.x-colophon.bottom {
+    background-color: #000000;
+}
+
+.x-btn-navbar,
+.x-btn-navbar.collapsed:hover {
+    background-color: #f6c506;
+}
+
+.x-btn-navbar.collapsed {
+    background-color: #ffffff;
+}
+
+.h-entry:before {
+    color: #dddddd;
+}
+
+.x-main {
+    width: 68.79803%;
+}
+
+.x-sidebar {
+    width: 24.79803%;
+}
+
+.x-navbar-static-active .x-navbar .x-nav > li,
+.x-navbar-fixed-top-active .x-navbar .x-nav > li {
+    height: 90px;
+    padding-top: 34px;
+}
+
+.x-navbar-fixed-left-active .x-navbar .x-nav > li > a,
+.x-navbar-fixed-right-active .x-navbar .x-nav > li > a {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.x-navbar .x-nav > li:before {
+    padding-top: 34px;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+    top: 90px;;
+}
+
+.sf-menu li li:hover ul,
+.sf-menu li li.sfHover ul {
+    top: -1.75em;
+}
+
+.x-navbar-fixed-left-active .x-widgetbar {
+    left: 235px;
+}
+
+.x-navbar-fixed-right-active .x-widgetbar {
+    right: 235px;
+}
+
+/*
+// Renew container sizing.
+*/
+
+.x-container-fluid.width {
+    width: 88%;
+}
+
+.x-container-fluid.max {
+    max-width: 1200px;
+}
+
+/*
+// Renew custom fonts.
+*/
+
+.h-landmark {
+    font-weight: 600;
+}
+
+/*
+// Renew mobile styles.
+*/
+
+@media (max-width: 979px) {
+    .x-navbar-static-active .x-navbar .x-nav > li,
+    .x-navbar-fixed-top-active .x-navbar .x-nav > li {
+        height: auto;
+        padding-top: 0;
+    }
+
+    .x-navbar-fixed-left .x-container-fluid.width,
+    .x-navbar-fixed-right .x-container-fluid.width {
+        width: 88%;
+    }
+
+    .x-navbar-fixed-left-active .x-navbar .x-nav > li > a,
+    .x-navbar-fixed-right-active .x-navbar .x-nav > li > a {
+        margin-top: 0;
+    }
+
+    .x-navbar-fixed-left-active .x-widgetbar {
+        left: 0;
+    }
+
+    .x-navbar-fixed-right-active .x-widgetbar {
+        right: 0;
+    }
+}
+
+/*
+// Body.
+*/
+
+body {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/*
+// Headings.
+*/
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 700;
+    letter-spacing: 0px;
+}
+
+/*
+// Content.
+*/
+
+.entry-header,
+.entry-excerpt,
+.entry-content {
+    font-size: 14px;
+}
+
+/*
+// Brand.
+*/
+
+.x-brand {
+    font-weight: 400;
+    letter-spacing: -3px;
+}
+
+/*
+// Body.
+*/
+
+body,
+input,
+button,
+select,
+textarea {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/*
+// Headings.
+*/
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;;
+}
+
+/*
+// Brand.
+*/
+
+.x-brand {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/*
+// Content/sidebar sizing.
+*/
+
+.x-main.full {
+    float: none;
+    display: block;
+    width: auto;
+}
+
+@media (max-width: 979px) {
+    .x-main.left,
+    .x-main.right,
+    .x-sidebar.left,
+    .x-sidebar.right {
+        float: none;
+        display: block;
+        width: auto;
+    }
+}
+
+/*
+// Widgetbar.
+*/
+
+.x-btn-widgetbar {
+    border-top-color: #000000;
+    border-right-color: #000000;
+}
+
+.x-btn-widgetbar:hover {
+    border-top-color: #444444;
+    border-right-color: #444444;
+}
+
+/*
+// Navbar layout.
+*/
+
+body.x-navbar-fixed-left-active {
+    padding-left: 235px;
+}
+
+body.x-navbar-fixed-right-active {
+    padding-right: 235px;
+}
+
+.x-navbar {
+    font-size: 13px;
+}
+
+.x-navbar .x-nav > li > a {
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+.x-navbar-fixed-left,
+.x-navbar-fixed-right {
+    width: 235px;
+}
+
+.x-navbar-fixed-top-active .x-navbar-wrap {
+    height: 90px;
+}
+
+.x-navbar-inner {
+    min-height: 90px;
+}
+
+.x-btn-navbar {
+    margin-top: 20px;;
+}
+
+.x-btn-navbar,
+.x-btn-navbar.collapsed {
+    font-size: 24px;
+}
+
+.x-brand {
+    font-size: 54px;
+    font-size: 5.4rem;
+    margin-top: 13px;
+}
+
+body.x-navbar-fixed-left-active .x-brand,
+body.x-navbar-fixed-right-active .x-brand {
+    margin-top: 30px;
+}
+
+@media (max-width: 979px) {
+    body.x-navbar-fixed-left-active,
+    body.x-navbar-fixed-right-active {
+        padding: 0;
+    }
+
+    body.x-navbar-fixed-left-active .x-brand,
+    body.x-navbar-fixed-right-active .x-brand {
+        margin-top: 13px;
+    }
+
+    .x-navbar-fixed-top-active .x-navbar-wrap {
+        height: auto;
+    }
+
+    .x-navbar-fixed-left,
+    .x-navbar-fixed-right {
+        width: auto;
+    }
+}
+
+/*
+// Buttons.
+*/
+
+.x-btn,
+.button,
+[type="submit"] {
+    color: #000000;
+    /*border-color:;
+    */
+    background-color: #f6c506;
+}
+
+.x-btn:hover,
+.button:hover,
+[type="submit"]:hover {
+    color: #f6c506;
+    /*border-color:;
+    */
+    background-color: #000000;
+}
+
+.x-btn.x-btn-real,
+.x-btn.x-btn-real:hover {
+    margin-bottom: 0.25em;
+    text-shadow: 0 0.075em 0.075em rgba(0, 0, 0, 0.65);
+}
+
+.x-btn.x-btn-real {
+    -webkit-box-shadow: 0 0.25em 0 0 #a71000, 0 4px 9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0.25em 0 0 #a71000, 0 4px 9px rgba(0, 0, 0, 0.75);
+}
+
+.x-btn.x-btn-real:hover {
+    -webkit-box-shadow: 0 0.25em 0 0 #a71000, 0 4px 9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0.25em 0 0 #a71000, 0 4px 9px rgba(0, 0, 0, 0.75);
+}
+
+.x-btn.x-btn-flat,
+.x-btn.x-btn-flat:hover {
+    margin-bottom: 0;
+    text-shadow: 0 0.075em 0.075em rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.x-btn.x-btn-transparent,
+.x-btn.x-btn-transparent:hover {
+    margin-bottom: 0;
+    border-width: 3px;
+    text-shadow: none;
+    text-transform: uppercase;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.x-btn-circle-wrap:before {
+    width: 172px;
+    height: 43px;
+    background: url(http://www.muscleblaze.com/wp-content/themes/x/framework/img/global/btn-circle-top-small.png) center center no-repeat;
+    -webkit-background-size: 172px 43px;
+    background-size: 172px 43px;
+}
+
+.x-btn-circle-wrap:after {
+    width: 190px;
+    height: 43px;
+    background: url(http://www.muscleblaze.com/wp-content/themes/x/framework/img/global/btn-circle-bottom-small.png) center center no-repeat;
+    -webkit-background-size: 190px 43px;
+    background-size: 190px 43px;
+}
+
+.x-btn,
+.x-btn:hover,
+.button,
+.button:hover,
+[type="submit"],
+[type="submit"]:hover {
+    text-shadow: 0 0.075em 0.075em rgba(0, 0, 0, 0.5);
+}
+
+.x-btn, [type="submit"] {
+    padding: 0.385em 0.923em 0.538em;
+    font-size: 13px;
+    font-size: 1.3rem;
+}
+
+.x-colophon.bottom {
+    padding: 25px 0;
+}
+
+.x-nav .sub-menu li > a:after {
+    content: "\f101";
+    font-family: FontAwesome;
+}
+
+.x-navbar .x-nav > li > .sub-menu .sub-menu {
+    left: 110%;
+    right: 105%;
+    top: 5%;
+}
+
+.x-navbar .sub-menu {
+    padding: 0 1.75em;
+}
+
+.x-navbar .x-nav > li > .sub-menu {
+    left: 0;
+    right: 0;
+}
+
+::selection {
+    color: #000;
+    background: #f6c506;
+}
+
+::-moz-selection {
+    color: #000;
+    background: #f6c506;
+}
+
+.x-btn, .x-btn:hover, .button, .button:hover, [type="submit"], [type="submit"]:hover {
+    text-shadow: none;
+}
+
+.x-colophon.top {
+    padding: 5% 0 5.25%;
+    background-color: #000000;
+    border-top: 3px solid #F6C506;
+}
+
+.x-navbar {
+    border-bottom: 3px solid #F6C506;
+}
+
+.x-tab-content {
+    border-width: 0px 1px 1px;
+}
+
+.x-nav-tabs {
+    border-width: 1px 1px 0px;
+}
+
+.x-nav-tabs > li > a {
+    color: #f6c506;
+    background-color: #000;
+}
+
+.x-nav-tabs > li > a:hover {
+    color: #000;
+    background-color: #f6c506;
+}
+
+h4, h5 {
+    margin-top: 0px;
+}
+
+h5 {
+    font-size: 125%;
+}
+
+ul.tabList > li {
+    margin-top: 10px;
+}
+
+.x-nav-tabs > li {
+    float: left;
+    text-align: center;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+h3 {
+    margin-top: 25px;
+    font-size: 28px;
+    letter-spacing: normal;
+}
+
+.x-promo {
+    border: 1px solid #e5e5e5;
+}
+
+.x-btn.x-btn-large {
+    padding: 8px 20px;
+    font-size: 16px;
+}
+
+.x-content-band {
+    padding: 0;
+}
+
+.x-navbar-wrap .x-navbar .x-navbar-inner .x-nav-collapse ul#menu-navbar li#menu-item-1949 a {
+    color: #f6c506 !important;
+}
+
+.x-navbar-wrap .x-navbar .x-navbar-inner .x-nav-collapse ul#menu-navbar li#menu-item-1949 a:hover {
+    color: #f6c506 !important;
+}
+

@@ -15,7 +15,9 @@
     text-decoration: none;
 }
 .first_level:hover {
-    background-color: rgb( 40, 44, 47 );
+    /*background-color: rgb( 40, 44, 47 );
+    */
+    background-color: rgb( 10, 14, 17 );
 }
 
 .first_level:hover > a {
@@ -24,7 +26,9 @@
 
 .inside_second,
 .inside_third {
-    background-color: rgb( 40, 44, 47 );
+    /*background-color: rgb( 40, 44, 47 );
+    */
+    background-color: rgb( 10, 14, 17 );
     border-top: 0;
     display: none;
     margin: 0;
@@ -64,5 +68,6 @@
 }
 
 .second_level:hover > a {
-    background-color: rgba( 255, 255, 255, 0.1);
+    /*background-color: rgba( 255, 255, 255, 0.1);*/
+    background-color: rgba( 1, 1, 1, 1.0);
 }

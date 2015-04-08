@@ -6,7 +6,8 @@ var PAGE_CONSTANTS = {
   'VARIANT_LP_IDENTIFIER' : 'VRNT-',
   'STORE_PRODUCT_KEY_PREFIX' : 'SP-',
   'STORE_VARIANT_KEY_PREFIX' : '/sv',
-  'BRAND_KEY_PREFIX' : '/brand'
+  'BRAND_KEY_PREFIX' : '/brand',
+  'MB_PRODUCT_PREFIX' : '/products'
 
 };
 
@@ -28,7 +29,6 @@ Object.freeze(PAGE_CONSTANTS);
 Object.freeze(PAYMENT_CONSTANTS);
 Object.freeze(PLATFORM_CONSTANTS);
 Object.freeze(DEFAULT_VALUES);
-
 module.exports.PAGE_CONSTANTS = PAGE_CONSTANTS;
 module.exports.PAYMENT_CONSTANTS = PAYMENT_CONSTANTS;
 module.exports.PLATFORM_CONSTANTS = PLATFORM_CONSTANTS;

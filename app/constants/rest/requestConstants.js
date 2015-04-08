@@ -33,7 +33,9 @@ var api = {
   API_ACCESS_KEY : 'apiAccessKey',
   GATEWAY_ORDER_ID : 'gatewayOrderId',
   REASON : 'reason',
-  COMMENTS : 'comments'
+  COMMENTS : 'comments',
+
+  POST_ID : 'postId'
 
 }
 
